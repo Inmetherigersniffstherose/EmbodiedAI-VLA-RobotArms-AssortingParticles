@@ -1,57 +1,63 @@
 # Pick and place parts with Evo-RL
 
-This project develops a robot policy for the task **sort, pick and place parts** using a customized Evo-RL framework. It keeps task documentation, dataset references, experiment configurations, and evaluation records in an independent repository. Shared training code and robot integrations belong in the parent Evo-RL fork.
+This project uses a customized [Evo-RL framework](https://github.com/Inmetherigersniffstherose/Evo-RL) to train a robot to sort parts into their corresponding containers. We trained the policy in two rounds, expanding from two part types and 500 demonstration episodes to five part types and 841 combined episodes. The final model achieved a reported success rate of **over 90%** when tested with random numbers and combinations of parts placed at random positions.
 
-## Repository relationship
+The dataset is available on Hugging Face: **[RuiZhao88/Pick_Place_Parts](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts)**.
 
-Intended location in the customized framework: `projects/pick-place-parts`, mounted as a Git submodule. Each project commit versions task assets independently; the parent repository pins the project commit used with a framework revision.
+## Task and workspace
 
-The original framework is [MINT-SJTU/Evo-RL](https://github.com/MINT-SJTU/Evo-RL). A customized fork should retain the original as `upstream` and use the customized fork as `origin`.
+The robot picks parts from a workspace marked by a white dashed-line box and places each part into the appropriate container. There are five part types, each associated with a destination container. Collection began with two types and expanded to the other three after testing the first trained policy.
 
-## Current dataset
+Demonstrations varied part positions and orientations within the marked workspace. For example, one part could be placed in the top-right corner with its tail tilted, while another lay flat in the bottom-right corner. This variation was intended to expose the policy to different arrangements of the same parts.
 
-Local source: `/home/rui/.cache/huggingface/lerobot/local/pick_place_parts_1113_merged`
+## Round one collection and training
 
-The recorded task uses a `rebot_b601_follower`, with seven state and action components: shoulder pan, shoulder lift, elbow flex, wrist flex, wrist yaw, wrist roll, and gripper. Front and wrist RGB streams are recorded at 640 by 480 pixels and 30 FPS in LeRobot v3.0 format.
+The first round used **500 episodes** involving two part types and their two destination containers:
 
-Inspection on 18 November 2026 found:
+- **Single-part scenes — 200 episodes:** 100 episodes for each type, with one part placed at different positions within the white dashed-line box.
+- **Two parts of the same type — 200 episodes:** 100 episodes for each type, varying the positions and orientations of both parts to cover a broad range of arrangements.
+- **Two parts of different types — 100 episodes:** one part of each of the two types in the workspace.
 
-- 841 episodes and 596,020 frames, equivalent to approximately 5.52 hours at 30 FPS, excluding resets.
-- Mean episode length of 23.62 seconds; median 22.43 seconds; range 2.77 to 93.30 seconds, using frame count divided by FPS.
-- 840 episodes labeled `success` and one labeled `failure`.
-- Every frame attributed to `human`; all intervention flags and recorded policy actions are zero.
-- Frame indices are unique and cover 0 through 596,019; episode frame counts agree with episode metadata. Action, observation state, and policy action arrays contain no nonfinite values.
+We trained the first policy on these 500 episodes using the Evo-RL VLM + VLA process, then tested the model before collecting the second round of data.
 
-These are demonstration collection statistics. The 99.88% success-label proportion is not an autonomous policy success rate. Zero intervention flags do not establish autonomy when all action sources are human.
+## Round two collection and training
 
-The dataset declares all episodes as training data. Its current schema has no value, advantage, or advantage-conditioned indicator fields. The single failure also provides limited negative outcome coverage for value learning.
+The second round expanded the task to all **five part types and destination containers**. The approximate collection breakdown was:
 
-## Evo-RL workflow
+- **The three additional part types:** approximately 50 episodes per type, with scenes containing one or two parts of that type.
+- **Mixed-part scenes:** approximately 200 episodes distributed across random combinations of two, three, four, or five different part types, with one part of each selected type in a scene.
 
-1. Establish and evaluate a demonstration-trained policy baseline using the customized framework.
-2. Collect policy rollouts with human takeover available, preserving collector identities and episode outcomes.
-3. Merge versioned collection rounds and train the value function on the resulting data pool.
-4. Infer values and advantages, then generate binary advantage-conditioned indicators.
-5. Train a task-text-compatible policy with those indicators and evaluate it against the baseline.
-6. Repeat collection and training, retaining the framework revision, project revision, dataset identity, and checkpoint for every comparison.
+The category counts are approximate. The exact number of additional episodes was **341**, bringing the combined dataset to **841 episodes**.
 
-This is the intended workflow, not a claim that all stages have been completed for this dataset. Framework README hyperparameters are examples and should become project settings only when an experiment explicitly records them.
+For the second training round, we used the model from round one as the base model and ran the VLM + VLA process again on the full combined dataset. The second round therefore trained on the original 500 episodes together with the 341 additional episodes, rather than training only on the new data.
 
-## Layout
+## Evaluation and results
 
-- `configs/dataset.json`: machine-readable dataset reference and verified snapshot.
-- `docs/experiments.md`: experiment and evaluation record format.
-- `docs/repository-setup.md`: fork and submodule setup conventions.
-- `scripts/`: task-specific launch and evaluation scripts as experiments are established.
+We evaluated the final model in **three runs of 20 uninterrupted inference cases**. Test scenes contained random numbers of randomly selected parts from the five types, placed at random positions. Under these conditions, the model achieved a reported task success rate of **over 90%**.
 
-Dataset parquet files, videos, model weights, local environments, and generated outputs stay outside this repository. Reference large artifacts by stable location and version instead of committing them.
+The observed failure case was an occasional sorting error: the robot picked up a part but placed it into the wrong destination bin. Correct destination selection remains an area for improvement.
 
-## Evaluation plan
+The reported evaluation result is separate from the success labels attached to demonstration episodes. Those labels describe the collected data and are not the model's autonomous evaluation success rate.
 
-Reserve whole episodes for validation before training; use source session or collection round boundaries where available to reduce leakage. Evaluate policies on fresh robot trials under a fixed task protocol. Record trial counts, autonomous successes, human takeovers, completion times, and failure categories. Compare policies under the same object distribution and initial conditions, and report uncertainty alongside success rates.
+## Dataset details
 
-The next project milestone is a reproducible baseline experiment and a separate autonomous evaluation record. Use `docs/experiments.md` to capture measured results.
+The published dataset uses **LeRobot v3.0** format and contains:
 
-## Evidence
+- **841 episodes** and **596,020 frames**, recorded at **30 FPS**.
+- Approximately **5.52 hours** of recorded episode data, excluding resets.
+- Front and wrist RGB camera streams at **640 × 480** resolution.
+- Seven-dimensional robot observations and actions: shoulder pan, shoulder lift, elbow flex, wrist flex, wrist yaw, wrist roll, and gripper.
+- Robot type: `rebot_b601_follower`.
+- Task instruction: `sort, pick and place parts`.
 
-Dataset facts come from `meta/info.json`, `meta/tasks.parquet`, `meta/episodes/chunk-000/file-000.parquet`, and the dataset frame parquet data. Workflow descriptions follow the parent Evo-RL README sections on value training, value inference, policy training, and closed-loop collection. Dataset values were inspected read-only; videos were not decoded for this summary.
+The uploaded snapshot was verified against all 76 local files using file sizes and SHA-256 hashes. Its Hugging Face revision is [`ce72636a31d9035acc25cbac4ceaf65bedbd7aa6`](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts/tree/ce72636a31d9035acc25cbac4ceaf65bedbd7aa6).
+
+## Repository organization
+
+This repository is an independent project mounted at `projects/pick-place-parts` as a Git submodule of the customized Evo-RL framework. Shared framework and robot integration changes belong in the parent repository; task documentation, dataset references, configurations, and experiment records belong here.
+
+- `configs/dataset.json`: dataset reference and verified statistics.
+- `docs/experiments.md`: training and evaluation record templates.
+- `docs/repository-setup.md`: fork and submodule conventions.
+
+The framework is based on [MINT-SJTU/Evo-RL](https://github.com/MINT-SJTU/Evo-RL). Large datasets, videos, and model checkpoints are stored outside Git.

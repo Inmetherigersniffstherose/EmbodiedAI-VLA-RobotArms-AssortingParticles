@@ -1,5 +1,7 @@
 {
-  "dataset_id": "local/pick_place_parts_1113_merged",
+  "dataset_id": "RuiZhao88/Pick_Place_Parts",
+  "hub_url": "https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts",
+  "hub_revision": "ce72636a31d9035acc25cbac4ceaf65bedbd7aa6",
   "local_root": "/home/rui/.cache/huggingface/lerobot/local/pick_place_parts_1113_merged",
   "task": "sort, pick and place parts",
   "inspection_date": "2026-11-18",
