@@ -4,6 +4,12 @@ This project uses a customized [Evo-RL framework](https://github.com/Inmetherige
 
 The dataset is available on Hugging Face: **[RuiZhao88/Pick_Place_Parts](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts)**.
 
+## A Successful Inference Episode
+
+Playback at **5× speed**. Click the preview or [watch the MP4](assets/videos/successful_inference_5x.mp4).
+
+[![A Successful Inference Episode at 5x speed](assets/videos/successful_inference_5x.gif)](assets/videos/successful_inference_5x.mp4)
+
 ## Task and workspace
 
 The robot picks parts from a workspace marked by a white dashed-line box and places each part into the appropriate container. There are five part types, each associated with a destination container. Collection began with two types and expanded to the other three after testing the first trained policy.
