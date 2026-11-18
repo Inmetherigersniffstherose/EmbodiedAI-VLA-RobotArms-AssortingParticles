@@ -10,6 +10,12 @@ The robot picks parts from a workspace marked by a white dashed-line box and pla
 
 Demonstrations varied part positions and orientations within the marked workspace. For example, one part could be placed in the top-right corner with its tail tilted, while another lay flat in the bottom-right corner. This variation was intended to expose the policy to different arrangements of the same parts.
 
+## Dataset scenarios
+
+Representative front-camera frames show single parts, same-type pairs, and mixed scenes containing two to five parts in the dashed workspace. Captions identify the source episode and timestamp.
+
+![Representative pick and place dataset scenarios](assets/images/scenario_overview.png)
+
 ## Round one collection and training
 
 The first round used **500 episodes** involving two part types and their two destination containers:
@@ -51,12 +57,6 @@ The published dataset uses **LeRobot v3.0** format and contains:
 - Task instruction: `sort, pick and place parts`.
 
 The uploaded snapshot was verified against all 76 local files using file sizes and SHA-256 hashes. Its Hugging Face revision is [`ce72636a31d9035acc25cbac4ceaf65bedbd7aa6`](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts/tree/ce72636a31d9035acc25cbac4ceaf65bedbd7aa6).
-
-## Dataset scenarios
-
-Representative front-camera frames show single parts, same-type pairs, and mixed scenes containing two to five parts in the dashed workspace. Captions identify the source episode and timestamp.
-
-![Representative pick and place dataset scenarios](assets/images/scenario_overview.png)
 
 ## Customized robot setup
 
