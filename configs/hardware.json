@@ -1,0 +1,194 @@
+{
+  "snapshot_date": "2026-11-18",
+  "note": "Recorded project ports and cameras combined with inspected runtime driver defaults; documentation manifest, not a top-level LeRobot CLI config.",
+  "robot": {
+    "port": "/dev/ttyACM0",
+    "can_adapter": "damiao",
+    "dm_serial_baud": 921600,
+    "disable_torque_on_disconnect": true,
+    "max_relative_target": null,
+    "cameras": {
+      "wrist": {
+        "type": "opencv",
+        "index_or_path": "/dev/cam_left",
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "fourcc": "MJPG"
+      },
+      "front": {
+        "type": "opencv",
+        "index_or_path": "/dev/cam_back",
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "fourcc": "MJPG"
+      }
+    },
+    "motor_can_ids": {
+      "shoulder_pan": [
+        1,
+        17
+      ],
+      "shoulder_lift": [
+        2,
+        18
+      ],
+      "elbow_flex": [
+        3,
+        19
+      ],
+      "wrist_flex": [
+        4,
+        20
+      ],
+      "wrist_yaw": [
+        5,
+        21
+      ],
+      "wrist_roll": [
+        6,
+        22
+      ],
+      "gripper": [
+        7,
+        23
+      ]
+    },
+    "pos_vel_velocity": [
+      150.0,
+      150.0,
+      150.0,
+      150.0,
+      150.0,
+      150.0,
+      900.0
+    ],
+    "control_mode": "mit",
+    "mit_kp": [
+      45.0,
+      45.0,
+      45.0,
+      8.0,
+      9.0,
+      8.0,
+      8.0
+    ],
+    "mit_kd": [
+      12.0,
+      12.0,
+      12.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "gripper_control_mode": "force_pos",
+    "gripper_torque_ratio": 0.07,
+    "gripper_mit_kp": 8.0,
+    "gripper_mit_kd": 0.3,
+    "joint_limits": {
+      "shoulder_pan": [
+        -150.0,
+        150.0
+      ],
+      "shoulder_lift": [
+        -200.0,
+        1.0
+      ],
+      "elbow_flex": [
+        -200.0,
+        1.0
+      ],
+      "wrist_flex": [
+        -80.0,
+        90.0
+      ],
+      "wrist_yaw": [
+        -90.0,
+        90.0
+      ],
+      "wrist_roll": [
+        -90.0,
+        90.0
+      ],
+      "gripper": [
+        -270.0,
+        5.0
+      ]
+    },
+    "home_action": {},
+    "home_from_start_position": true,
+    "home_duration_s": 6.0,
+    "home_hz": 25.0,
+    "home_velocity_deg_s": 12.0,
+    "home_tolerance_deg": 8.0,
+    "safe_home_debug": false,
+    "open_gripper_before_home": true,
+    "gripper_open_position_deg": -270.0,
+    "gripper_open_duration_s": 0.75,
+    "keep_gripper_open_during_home": true,
+    "close_gripper_after_home": true,
+    "gripper_closed_position_deg": 0.0,
+    "gripper_close_duration_s": 0.75,
+    "home_on_disconnect": true,
+    "id": "rebot_follower1103",
+    "calibration_dir": null,
+    "type": "rebot_b601_follower"
+  },
+  "teleop": {
+    "port": "/dev/ttyUSB0",
+    "baudrate": 1000000,
+    "joint_ids": {
+      "shoulder_pan": 0,
+      "shoulder_lift": 1,
+      "elbow_flex": 2,
+      "wrist_flex": 3,
+      "wrist_yaw": 4,
+      "wrist_roll": 5,
+      "gripper": 6
+    },
+    "joint_directions": {
+      "shoulder_pan": -1,
+      "shoulder_lift": -1,
+      "elbow_flex": 1,
+      "wrist_flex": 1,
+      "wrist_yaw": 1,
+      "wrist_roll": -1,
+      "gripper": -6
+    },
+    "joint_ranges": {
+      "shoulder_pan": [
+        -150,
+        150
+      ],
+      "shoulder_lift": [
+        -200,
+        5
+      ],
+      "elbow_flex": [
+        -200,
+        1
+      ],
+      "wrist_flex": [
+        -80,
+        90
+      ],
+      "wrist_yaw": [
+        -90,
+        90
+      ],
+      "wrist_roll": [
+        -90,
+        90
+      ],
+      "gripper": [
+        -271,
+        5
+      ]
+    },
+    "id": "rebot_leader1103",
+    "calibration_dir": null,
+    "type": "rebot_102_leader"
+  }
+}

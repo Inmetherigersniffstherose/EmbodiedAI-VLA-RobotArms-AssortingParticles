@@ -52,6 +52,12 @@ The published dataset uses **LeRobot v3.0** format and contains:
 
 The uploaded snapshot was verified against all 76 local files using file sizes and SHA-256 hashes. Its Hugging Face revision is [`ce72636a31d9035acc25cbac4ceaf65bedbd7aa6`](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts/tree/ce72636a31d9035acc25cbac4ceaf65bedbd7aa6).
 
+## Customized robot setup
+
+The project uses a **single reBot B601-DM follower arm** with a **reBot Arm 102 leader** for teleoperation. The wrist camera is mapped to `/dev/cam_left` and the front camera to `/dev/cam_back`; both capture at 640 × 480 and 30 FPS. The follower uses a Damiao serial CAN bridge, while the leader uses FashionStar UART servos.
+
+See [the hardware setup guide](docs/hardware-setup.md) for device ports, calibration, control settings, runtime dependencies, and collection and evaluation commands. The repository includes [the hardware configuration](configs/hardware.json), [an editable environment template](configs/robot.env.example), and a [snapshot of the customized drivers](hardware/driver_snapshot/).
+
 ## Repository organization
 
 This repository is an independent project mounted at `projects/pick-place-parts` as a Git submodule of the customized Evo-RL framework. Shared framework and robot integration changes belong in the parent repository; task documentation, dataset references, configurations, and experiment records belong here.

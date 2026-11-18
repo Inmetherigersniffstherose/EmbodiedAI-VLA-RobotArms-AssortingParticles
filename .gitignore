@@ -1,4 +1,5 @@
 .env
+configs/robot.env
 .venv/
 __pycache__/
 *.py[cod]

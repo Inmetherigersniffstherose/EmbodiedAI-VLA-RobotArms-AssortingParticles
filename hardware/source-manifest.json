@@ -1,0 +1,27 @@
+{
+  "snapshot_date": "2026-11-18",
+  "source_checkout": "/home/rui/yt_workspace/Codes/Evo-RL",
+  "source_commit": "19e9e964915b5ecb5b1f003bbd38070faca35c06",
+  "note": "Source files include local customizations; file SHA256 values, not the checkout commit alone, identify this snapshot.",
+  "python_version": "3.10.21",
+  "observed_packages": {
+    "lerobot": "0.4.4",
+    "motorbridge": "0.5.5",
+    "motorbridge-smart-servo": "0.0.4",
+    "pin": "4.1.0",
+    "torch": "2.7.1",
+    "av": "15.1.0",
+    "draccus": "0.10.0"
+  },
+  "sha256": {
+    "hardware/driver_snapshot/robots/rebot_b601_follower/__init__.py": "b3066bd97676304d0f121f9fb34ea2f396f47222765d9736af608640aac5ca63",
+    "hardware/driver_snapshot/robots/rebot_b601_follower/config_rebot_b601_follower.py": "b98f8badfd07df6defc39fc1d6f38c67c2487b4e22627284642aae61a92a3533",
+    "hardware/driver_snapshot/robots/rebot_b601_follower/gravity.py": "5a4f3359d04338a753015c85f1c7192f37a5e2e983dd1d1c537c6413b5eab6ec",
+    "hardware/driver_snapshot/robots/rebot_b601_follower/rebot_b601_follower.py": "2baaf2ad35ad4a69fd1764c4cd93c7547b2e02e3665da446b11d98dfadfe8a75",
+    "hardware/driver_snapshot/teleoperators/rebot_102_leader/config_rebot_102_leader.py": "1a7b9fcd48206aac73d643754c15baa2f7eddefded183f3542a59feb8726ef61",
+    "hardware/driver_snapshot/teleoperators/rebot_102_leader/__init__.py": "53f5847b3ab5f393b8e946267fa548520485420fbd52b17d6e58be1a1c970ff5",
+    "hardware/driver_snapshot/teleoperators/rebot_102_leader/rebot_102_leader.py": "ce1991c220a946e30a96073042f0a20e14b1aaa0edce722d61937348f1ad5d07",
+    "hardware/calibration/robots/rebot_b601_follower/rebot_follower1103.json": "a90ee48da26544de0d82afccfe5cb373618c909dbe1aa441da9a97ec8c0ad01b",
+    "hardware/calibration/teleoperators/rebot_102_leader/rebot_leader1103.json": "2f1eaaa4a391aa59fc25744337708ff5d020aeb1c0aaa39df2d6c72dca965f5f"
+  }
+}
