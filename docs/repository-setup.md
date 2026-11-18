@@ -2,7 +2,7 @@
 
 ## Independent repositories
 
-[Embodied AI VLA Robot Arms Assorting Particles](https://github.com/Inmetherigersniffstherose/Embodied-AI-VLA-RobotArms-Assorting-Particles) is a standalone public repository on the owner's GitHub profile. [Evo-RL](https://github.com/Inmetherigersniffstherose/Evo-RL) is the customized framework repository. Their READMEs link to each other; neither repository needs to contain the other.
+[EmbodiedAI-VLA-RobotArms-AssortingParticles](https://github.com/Inmetherigersniffstherose/EmbodiedAI-VLA-RobotArms-AssortingParticles) is a standalone public repository on the owner's GitHub profile. [Evo-RL](https://github.com/Inmetherigersniffstherose/Evo-RL) is the customized framework repository. Their READMEs link to each other; neither repository needs to contain the other.
 
 The framework owns reusable training and robot integration code. This project owns task documentation, dataset references, configurations, experiment records, and a source archive of the customized project drivers. Additional tasks can have their own repositories alongside these two.
 
@@ -12,10 +12,10 @@ Run these commands from the directory where you keep your projects:
 
 ```bash
 git clone https://github.com/Inmetherigersniffstherose/Evo-RL.git
-git clone https://github.com/Inmetherigersniffstherose/Embodied-AI-VLA-RobotArms-Assorting-Particles.git
+git clone https://github.com/Inmetherigersniffstherose/EmbodiedAI-VLA-RobotArms-AssortingParticles.git
 ```
 
-The resulting `Evo-RL/` and `Embodied-AI-VLA-RobotArms-Assorting-Particles/` directories are siblings. Each has its own history and remote. Commit and push changes from the repository that owns them.
+The resulting `Evo-RL/` and `EmbodiedAI-VLA-RobotArms-AssortingParticles/` directories are siblings. Each has its own history and remote. Commit and push changes from the repository that owns them.
 
 Cloning does not install hardware support. Follow [the hardware guide](hardware-setup.md) to select the hardware-enabled runtime and configure device paths.
 
