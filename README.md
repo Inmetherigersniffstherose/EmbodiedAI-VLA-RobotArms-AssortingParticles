@@ -52,6 +52,12 @@ The published dataset uses **LeRobot v3.0** format and contains:
 
 The uploaded snapshot was verified against all 76 local files using file sizes and SHA-256 hashes. Its Hugging Face revision is [`ce72636a31d9035acc25cbac4ceaf65bedbd7aa6`](https://huggingface.co/datasets/RuiZhao88/Pick_Place_Parts/tree/ce72636a31d9035acc25cbac4ceaf65bedbd7aa6).
 
+## Dataset scenarios
+
+Representative front-camera frames show single parts, same-type pairs, and mixed scenes containing two to five parts in the dashed workspace. Captions identify the source episode and timestamp.
+
+![Representative pick and place dataset scenarios](assets/images/scenario_overview.png)
+
 ## Customized robot setup
 
 The project uses a **single reBot B601-DM follower arm** with a **reBot Arm 102 leader** for teleoperation. The wrist camera is mapped to `/dev/cam_left` and the front camera to `/dev/cam_back`; both capture at 640 × 480 and 30 FPS. The follower uses a Damiao serial CAN bridge, while the leader uses FashionStar UART servos.
