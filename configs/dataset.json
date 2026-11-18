@@ -1,0 +1,21 @@
+{
+  "dataset_id": "local/pick_place_parts_1113_merged",
+  "local_root": "/home/rui/.cache/huggingface/lerobot/local/pick_place_parts_1113_merged",
+  "task": "sort, pick and place parts",
+  "inspection_date": "2026-11-18",
+  "format": "LeRobot v3.0",
+  "robot_type": "rebot_b601_follower",
+  "fps": 30,
+  "episodes": 841,
+  "frames": 596020,
+  "success_labeled_episodes": 840,
+  "failure_labeled_episodes": 1,
+  "human_attributed_frames": 596020,
+  "intervention_flagged_frames": 0,
+  "policy_action_nonzero_frames": 0,
+  "state_dimension": 7,
+  "action_dimension": 7,
+  "cameras": ["observation.images.front", "observation.images.wrist"],
+  "declared_split": {"train": "0:841"},
+  "provenance_note": "Local path is machine-specific. Pin an immutable dataset revision or content manifest for each experiment."
+}
