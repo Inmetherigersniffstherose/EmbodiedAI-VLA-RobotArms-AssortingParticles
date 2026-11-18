@@ -60,10 +60,10 @@ See [the hardware setup guide](docs/hardware-setup.md) for device ports, calibra
 
 ## Repository organization
 
-This repository is an independent project mounted at `projects/pick-place-parts` as a Git submodule of the customized Evo-RL framework. Shared framework and robot integration changes belong in the parent repository; task documentation, dataset references, configurations, and experiment records belong here.
+This is a standalone public project repository under [Inmetherigersniffstherose](https://github.com/Inmetherigersniffstherose), maintained alongside the customized Evo-RL framework. Clone the two repositories into sibling directories. Reusable framework and robot integration changes belong in Evo-RL; task documentation, dataset references, configurations, experiment records, and the archived project drivers belong here.
 
 - `configs/dataset.json`: dataset reference and verified statistics.
 - `docs/experiments.md`: training and evaluation record templates.
-- `docs/repository-setup.md`: fork and submodule conventions.
+- `docs/repository-setup.md`: repository organization and cloning instructions.
 
 The framework is based on [MINT-SJTU/Evo-RL](https://github.com/MINT-SJTU/Evo-RL). Large datasets, videos, and model checkpoints are stored outside Git.

@@ -1,19 +1,26 @@
 # Repository setup
 
-## Ownership
+## Independent repositories
 
-The customized Evo-RL fork owns reusable framework changes. This repository owns the pick and place task summary, dataset references, task configurations, launch scripts, and experiment records. Future tasks should receive sibling repositories under the parent's `projects/` directory.
+[pick-place-parts](https://github.com/Inmetherigersniffstherose/pick-place-parts) is a standalone public repository on the owner's GitHub profile. [Evo-RL](https://github.com/Inmetherigersniffstherose/Evo-RL) is the customized framework repository. Their READMEs link to each other; neither repository needs to contain the other.
 
-## Remote setup
+The framework owns reusable training and robot integration code. This project owns task documentation, dataset references, configurations, experiment records, and a source archive of the customized project drivers. Additional tasks can have their own repositories alongside these two.
 
-Create an empty remote for this project and a fork of the original Evo-RL repository under the intended account or organization. Avoid publishing local datasets, checkpoints, credentials, or unrelated working files.
+## Clone the project
 
-Configure the parent fork with its own URL as `origin` and the original Evo-RL URL as `upstream`. Preserve existing work when changing remotes; changing a remote does not save uncommitted customizations.
+Run these commands from the directory where you keep your projects:
 
-## Submodule registration
+```bash
+git clone https://github.com/Inmetherigersniffstherose/Evo-RL.git
+git clone https://github.com/Inmetherigersniffstherose/pick-place-parts.git
+```
 
-Push a project commit to its own remote first. Then register that remote at `projects/pick-place-parts` from the parent repository and commit the resulting `.gitmodules` and Git submodule entry in the parent fork. The submodule entry pins a project commit; it does not automatically follow the latest remote branch.
+The resulting `Evo-RL/` and `pick-place-parts/` directories are siblings. Each has its own history and remote. Commit and push changes from the repository that owns them.
 
-New parent checkouts should use `git clone --recurse-submodules`, or run `git submodule update --init --recursive` after cloning. Project changes must be committed and pushed in the project repository before the parent updates its pinned submodule commit.
+Cloning does not install hardware support. Follow [the hardware guide](hardware-setup.md) to select the hardware-enabled runtime and configure device paths.
 
-Do not stage all parent working files when registering this project. Review framework customizations and exclude unrelated environments, large outputs, and installer files.
+## Reproducibility
+
+Record the framework revision, project revision, dataset revision, and checkpoint for each experiment. Because the repositories are independent, a project commit does not automatically pin a framework revision. Use the experiment record template to preserve the exact combination.
+
+The customized framework uses its own GitHub repository as `origin` and the original MINT-SJTU/Evo-RL repository as `upstream`.
