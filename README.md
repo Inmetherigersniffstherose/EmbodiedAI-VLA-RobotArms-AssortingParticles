@@ -1,4 +1,4 @@
-# Pick and place parts with Evo-RL
+# Embodied AI-VLA-RobotArms-Assorting Particles
 
 This project uses a customized [Evo-RL framework](https://github.com/Inmetherigersniffstherose/Evo-RL) to train a robot to sort parts into their corresponding containers. We trained the policy in two rounds, expanding from two part types and 500 demonstration episodes to five part types and 841 combined episodes. The final model achieved a reported success rate of **over 90%** when tested with random numbers and combinations of parts placed at random positions.
 
